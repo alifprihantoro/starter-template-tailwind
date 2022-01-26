@@ -1,9 +1,11 @@
 var chokidar = require("chokidar");
 const { exec } = require('child_process');
 
+// // babel
+// require('./app/babel.js')
+
 exec('hugo --minify -s blog');
 exec('npx tailwind -i src/scss/main.scss -o ./public/main.css --postcss --minify')
-exec('node app/babel')
 exec('live-server blog/public')
 // exec('live-server public')
 const watcher = chokidar.watch(['blog/config.toml','blog/layouts','blog/content','src'], {

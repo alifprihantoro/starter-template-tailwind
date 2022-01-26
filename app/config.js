@@ -1,6 +1,11 @@
 const fs = require("fs");
-let config =[]; 
-
-config.push(fs.readFileSync('blog/config/site.toml', "utf8"));
+let config_param =[
+  'site.toml'
+]; 
+let config=[]
+config_param
+  .forEach(e=>{
+    config.push(fs.readFileSync(`blog/config/${e}`, "utf8"));
+  })
 
 fs.writeFileSync('blog/config.toml', config);
