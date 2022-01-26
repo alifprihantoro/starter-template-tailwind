@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "st": "concurrently \"live-server public\" \"node app\""
+    "dev": "node app",
+    "prod": "source prod.sh"
   },
   "keywords": [],
   "author": "",
