@@ -1,15 +1,17 @@
 var chokidar = require("chokidar");
 const { exec } = require('child_process');
 
-exec('hugo --minify && node api.js');
+exec('hugo --minify -s blog');
 exec('npx tailwind -i src/scss/main.scss -o ./public/main.css --postcss --minify')
-exec('live-server public')
+exec('node app/babel')
+exec('live-server blog/public')
 // exec('live-server public')
-const watcher = chokidar.watch("themes", {
+const watcher = chokidar.watch(['blog/config.toml','blog/layouts','blog/content','src'], {
   ignored: /(^|[\/\\])\../, // ignore dotfiles
   ignoreInitial: true,
 });
 
+// start watch
 watcher
   .on("change", (path, stats) => {
     // url = path.match(/fd/);
@@ -27,14 +29,3 @@ exec('hugo --minify')
 exec('npx tailwind -i src/scss/main.scss -o ./public/main.css --postcss --minify')
 console.log(`File ${path} has been added`)
   });
-// process.exit()
-
-console.log('Press any key to exit');
-
-process.stdin.setRawMode(true);
-process.stdin.resume();
-process.stdin.on('data',function(){
-console.log('youre going exit')
-process.exit()
-// process.exit.bind(process, 0)
-} );
