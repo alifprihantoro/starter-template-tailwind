@@ -1,0 +1,12 @@
+@import "plug.css";
+.lah {
+  color: red; }
+
+@layer base {
+  .myhead {
+    @apply text-2xl bg-red-800; } }
+
+div {
+  color: red; }
+  div span {
+    background: green; }
