@@ -1,0 +1,1 @@
+"use strict";require("./ts.js");var hai="percobaan keti";console.log("percobaan keti");var hola=function(){console.log("isi variabel 5"),!1};hola(),console.log("hii");
